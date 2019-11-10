@@ -1,0 +1,17 @@
+from pyvi import ViTokenizer, ViPosTagger # thư viện NLP tiếng Việt
+from tqdm import tqdm
+import numpy as np
+import gensim # thư viện NLP
+with open('line.txt', 'r', encoding='utf8') as f:
+    l = f.readline()
+    i=14
+    while(l[i]!=' '):
+        i=i+1
+    label=l[14:i]
+    content=l[i+1:]
+    #print(label, content)
+    content = gensim.utils.simple_preprocess(content)
+    #print(content)
+    content = ' '.join(content)
+    content = ViTokenizer.tokenize(content)
+    print(content)
